@@ -2,8 +2,11 @@ package service;
 
 import entity.ProductEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 import repository.ProductRepository;
+
+import java.util.Optional;
 
 @Service("ProductService")
 public class ProductServiceImpl implements ProductService {
@@ -21,7 +24,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductEntity getProductEntityById(Integer id) {
-        return productRepository.findOne(id);
+        Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
+        return productRepository.findById(id);
     }
 
     @Override
